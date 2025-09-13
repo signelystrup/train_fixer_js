@@ -1,1 +1,8 @@
-console.log('Happy developing ✨')
+function drawTrain(train){
+
+}
+
+function drawCar(){
+
+}
+

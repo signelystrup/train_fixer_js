@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+
+<script src="linkedList.js"></script>
+<script src="train.js"></script>
+<script src="visualizer.js"></script>
+
+<script>
+
+
+    train1 = new Train();
+    train2 = new Train();
+    train3 = new Train();
+
+    train1.addCar("sengevogn");
+    train1.printTrain();
+    //console.log(train1.trainList.isEmpty());
+
+    drawTrain(train1);
+    drawTrain(train2);
+    drawTrain(train3);
+
+</script>
+
 </body>
 </html>
