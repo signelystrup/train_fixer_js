@@ -68,12 +68,45 @@ class LinkedList {
     }
 
     get(index) {
+        let current = this.head;
+        let counter = 0;
+
+        while(current !== null){
+
+            if(counter === index){
+                return current.data;
+            }
+
+            current = current.next;
+            counter ++;
+        }
+
+        return null;
+    }
+
+    set(index, data){
+        let current = this.head;
+        let counter = 0;
+
+        while(current !== null){
+
+            if(counter === index){
+                current.data = data;
+                return true;
+            }
+
+            current = current.next;
+            counter ++;
+        }
+
+        return false;
+    }
+
+    contains(data){
 
     }
 
-    indexOf(data){
-
-    }
+    //indexOf(data){}
 
     forEach(callBack){
 
