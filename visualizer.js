@@ -16,6 +16,7 @@ function drawCar(car){
     carCard.classList.add(car.type);
     carCard.classList.add(car.subType);
 
+    //set text
     if(car.subType == null) {
         carCard.innerText = car.type;
     }else{

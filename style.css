@@ -2,11 +2,35 @@
     padding: 5px;
     margin: 10px;
     border: 1px solid black;
+
 }
 
 .car{
     padding: 10px;
     margin: 10px;
     border: 1px solid black;
+
+    height: inherit;
+
     background-color: lightgrey;
 }
+
+.lokomotiv{
+    background-color: palevioletred;
+}
+
+.passagervogn{
+    background-color: lightpink;
+}
+
+.godsvogn{
+    background-color: lavender;
+}
+.sengevogn{
+    background-color: #ffc8dd;
+}
+
+.siddevogn{
+    background-color: #cdb4db;
+}
+
