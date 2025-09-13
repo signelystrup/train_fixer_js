@@ -58,11 +58,10 @@ class Train{
             }
 
             current = current.next;
-        }
+        } //end of while lokomotiv-logik.
 
+        //SENGEVOGNE
         current = this.trainList.head.next;
-
-
         if (current.data !== sengevogn) { //if the first passenger car is a sengevogn, skip.
             while (current !== null &&
             current.data.type === "passagervogn") {
@@ -80,9 +79,11 @@ class Train{
             }//end of while
         }//end of if (current !== sengevogn)
 
-
         return true;
     }
+
+
+
 
     sortCars(){
 
