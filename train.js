@@ -57,17 +57,28 @@ class Train{
                 firstSengevognSectionEnded = true;
             }
 
-
             current = current.next;
         }
 
-        //PASSAGERVOGNE
-
-        //SIDDEVOGNE
-        //SENGEVOGNE
-        //SPISEVOGNE
+        current = this.trainList.head.next;
 
 
+        if (current.data !== sengevogn) { //if the first passenger car is a sengevogn, skip.
+            while (current !== null &&
+            current.data.type === "passagervogn") {
+
+                //if there are sidde- or spisevogne after a sengevogn:
+                if (current.data === sengevogn &&
+                    current.next.data === siddevogn ||
+                    current.next.data === spisevogn ) {
+
+                    return false;
+                }
+
+                current = current.next;
+
+            }//end of while
+        }//end of if (current !== sengevogn)
 
 
         return true;
