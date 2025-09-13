@@ -12,6 +12,19 @@ class Train{
 
     isValid(){
 
+        if (this.trainList.head.data.type !== "lokomotiv"){
+            return false;
+        }
+
+        const size = this.trainList.size();
+
+        if (size > 10 && this.trainList.tail.data.type !== "lokomotiv"){
+            return false;
+        }
+
+
+
+        return true;
     }
 
     sortCars(){
@@ -19,11 +32,7 @@ class Train{
     }
 
     printTrain(){
-        console.log("print train");
-        this.trainList.forEach(car => console.log("car: " + car.type +
-                                                   car.subType != null ?
-                                                   ", " + car.subType  : " ")
-                              );
+        this.trainList.forEach(car => console.log("car: " + car.type + ", " + car.subType));
     }
 
 }
