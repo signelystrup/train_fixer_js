@@ -12,8 +12,8 @@ class Train{
 
     isValid(){
 
-        if (this.trainList.isEmpty){
-            return true; //? it's not NOT valid.
+        if (this.trainList.isEmpty()){
+            return true; //?? it's not NOT valid.
         }
 
         const size = this.trainList.size();
@@ -31,18 +31,14 @@ class Train{
             return false;
         }
 
-        let i = 0;
         //check for locomotives in the middle of the train.
-        this.trainList.forEach(car => {
-            if (car === lokomotiv &&
-                i !== 0 &&
-                i !== size-1){
-
+        let current = this.trainList.head.next;
+        while(current !== this.trainList.tail){
+            if (current.data === lokomotiv ){
                 return false;
             }
-
-            i++;
-        });
+            current = current.next;
+        }
 
         //PASSAGERVOGNE
 
@@ -53,7 +49,6 @@ class Train{
 
 
         //GODSVOGNE
-
 
         return true;
     }
@@ -69,7 +64,7 @@ class Train{
             console.log("Is train valid? " + this.isValid() );
         }
 
-        this.trainList.forEach(car => console.log("car: " + car.type + ", " + car.subType));
+        //this.trainList.forEach(car => console.log("car: " + car.type + ", " + car.subType));
     }
 
 }

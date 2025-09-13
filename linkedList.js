@@ -146,4 +146,8 @@ class LinkedList {
 
         return array;
     }
+
+    hasNext(node){
+        return node.next !== null;
+    }
 }
