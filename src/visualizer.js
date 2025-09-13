@@ -6,6 +6,8 @@ function drawTrain(train){
 
     trainCard.classList.add("train");
 
+    trainCard.classList.toggle("not-valid", !train.isValid());
+
     train.trainList.forEach(car => trainCard.append(drawCar(car)) );
 }
 

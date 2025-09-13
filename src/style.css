@@ -34,3 +34,7 @@
     background-color: #cdb4db;
 }
 
+.train.not-valid{
+    background-color: #ca3a11;
+}
+

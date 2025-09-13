@@ -103,7 +103,7 @@ class Train{
             console.log("Is train valid? " + this.isValid() );
         }
 
-        this.trainList.forEach(car => console.log("car: " + car.type + ", " + car.subType));
+        //this.trainList.forEach(car => console.log("car: " + car.type + ", " + car.subType));
     }
 
 }
