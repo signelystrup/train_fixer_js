@@ -32,6 +32,8 @@ class Train{
         }
 
         let current = this.trainList.head.next;
+        let firstSengevognSectionEnded = false;
+
         while(current !== this.trainList.tail){
 
             //check for locomotives in the middle of the train.
@@ -44,6 +46,17 @@ class Train{
                 current.next.data.type === "passagervogn") {
                 return false;
             }
+
+            //sengevogne must be connected:
+            if (current.data === sengevogn &&
+                current.next.data !== sengevogn){
+                if (firstSengevognSectionEnded){ //starting second bloc with sengevogne.
+                    return false;
+                }
+
+                firstSengevognSectionEnded = true;
+            }
+
 
             current = current.next;
         }
