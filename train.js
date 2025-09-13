@@ -20,7 +20,10 @@ class Train{
 
     printTrain(){
         console.log("print train");
-        this.trainList.forEach(car => console.log("car: " + car));
+        this.trainList.forEach(car => console.log("car: " + car.type +
+                                                   car.subType != null ?
+                                                   ", " + car.subType  : " ")
+                              );
     }
 
 }

@@ -1,0 +1,12 @@
+.train{
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+.car{
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    background-color: lightgrey;
+}

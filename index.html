@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="style.css" />
+
 </head>
 <body>
 
+<div id="train-container">
+
+</div>
 
 <script src="linkedList.js"></script>
 <script src="train.js"></script>
@@ -13,14 +18,25 @@
 
 <script>
 
+    const lokomotiv = {type: "lokomotiv", subType: null}
+    const siddevogn = {type: "passagervogn", subType: "siddevogn"}
+    const sengevogn = {type: "passagervogn", subType: "sengevogn"}
+    const spisevogn = {type: "passagervogn", subType: "spisevogn"}
+    const godsvogn = {type: "godsvogn", subType: null}
+
 
     train1 = new Train();
     train2 = new Train();
     train3 = new Train();
 
-    train1.addCar("sengevogn");
-    train1.addCar("sengevogn");
-    train1.addCar("siddevogn");
+    train1.addCar(lokomotiv);
+
+    train1.addCar(sengevogn);
+    train1.addCar(sengevogn);
+    train1.addCar(siddevogn);
+    train1.addCar(spisevogn);
+
+    train1.addCar(godsvogn);
 
     train1.printTrain();
     train2.printTrain();
