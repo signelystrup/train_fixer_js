@@ -10,6 +10,11 @@ describe("der skal", function() {
     });
 
     describe("være et lokomotiv", function () {
+        xit("med mindre toget er tomt", function(){
+            train = new Train();
+            expect(train.isValid()).toBeTrue();
+        });
+
         it("først i toget", function () {
             expect(train.isValid()).toBeTrue();
         });
@@ -70,4 +75,44 @@ describe("togets længde kan være", function(){
 
         expect(train.isValid()).toBeTrue();
     });
-})
+});
+
+describe("godsvogne", function(){
+    let train;
+
+    beforeEach(function(){
+        train = new Train();
+        train.addCar(lokomotiv);
+        train.addCar(spisevogn);
+        train.addCar(spisevogn);
+        train.addCar(spisevogn);
+        train.addCar(spisevogn);
+    });
+
+
+    it("skal være bagerst i toget", function(){
+        train.addCar(godsvogn);
+        expect(train.isValid()).toBeTrue();
+
+        train.addCar(godsvogn);
+        train.addCar(godsvogn);
+        expect(train.isValid()).toBeTrue();
+    });
+
+    it("må ikke være mellem passagervogne", function(){
+        train.trainList.set(3, godsvogn);
+        expect(train.isValid()).toBeFalse();
+    });
+
+    it("er ikke et krav for, at toget er validt", function(){
+        expect(train.isValid()).toBeTrue();
+    });
+});
+
+describe("sengevogne", function(){
+    xit("skal være direkte forbundet");
+
+    xit("må ikke skulle krydses, for at komme fra en siddevogn til en spisevogn");
+});
+
+

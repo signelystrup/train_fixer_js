@@ -31,10 +31,8 @@ class Train{
         }
 
         if (size <= 10 && this.trainList.tail.data === lokomotiv){
-            console.log("invalid train: the last car may not be a locomotive, when train is shorter than 11.")
             return false;
         }else if (size > 10 && this.trainList.tail.data !== lokomotiv){ //if there are more than 10 cars, the last car must be a locomotive.
-            console.log("invalid train: the last car MUST be a locomotive, when train is longer than 10.")
             return false;
         }
 
@@ -70,20 +68,23 @@ class Train{
         //SENGEVOGNE
         current = this.trainList.head.next;
         if (current.data !== sengevogn) { //if the first passenger car is a sengevogn, skip.
+
             while (current !== null &&
             current.data.type === "passagervogn") {
 
                 //if there are sidde- or spisevogne after a sengevogn:
                 if (current.data === sengevogn &&
-                    current.next.data === siddevogn ||
-                    current.next.data === spisevogn ) {
+                    ( current.next.data === siddevogn||
+                      current.next.data === spisevogn )) {
+
+                    console.log("sidde- eller spisevogn efter en sengevogn");
 
                     return false;
                 }
 
                 current = current.next;
-
             }//end of while
+
         }//end of if (current !== sengevogn)
 
         return true;
@@ -103,7 +104,7 @@ class Train{
             console.log("Is train valid? " + this.isValid() );
         }
 
-        //this.trainList.forEach(car => console.log("car: " + car.type + ", " + car.subType));
+        this.trainList.forEach(car => console.log("car: " + car.type + ", " + car.subType));
     }
 
 }
