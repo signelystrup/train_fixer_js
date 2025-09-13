@@ -31,12 +31,20 @@ class Train{
             return false;
         }
 
-        //check for locomotives in the middle of the train.
         let current = this.trainList.head.next;
         while(current !== this.trainList.tail){
+
+            //check for locomotives in the middle of the train.
             if (current.data === lokomotiv ){
                 return false;
             }
+
+            //no passenger cars after godsvogne:
+            if (current.data === godsvogn &&
+                current.next.data.type === "passagervogn") {
+                return false;
+            }
+
             current = current.next;
         }
 
@@ -48,7 +56,6 @@ class Train{
 
 
 
-        //GODSVOGNE
 
         return true;
     }
