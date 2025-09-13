@@ -103,6 +103,17 @@ class LinkedList {
     }
 
     contains(data){
+        let current = this.head;
+
+        while (current !== null){
+            if (current.data === data){
+                return true;
+            }
+
+            current = current.next;
+        }
+
+        return false;
 
     }
 
@@ -128,5 +139,16 @@ class LinkedList {
     }
 
 
+    toArray(){
+        let array = [];
+        let current = this.head;
 
+        while (current !== null){ //pretty simple in js.
+            array.push(current.data);
+            current = current.next;
+        }
+
+        return array;
+    }
+    
 }
