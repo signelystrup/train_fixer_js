@@ -18,9 +18,15 @@ class Train{
 
         const size = this.trainList.size();
 
+
+
         //LOKOMOTIV
         if (this.trainList.head.data !== lokomotiv){ //the first car must always be a locomotive.
             return false;
+        }
+
+        if(size === 1){ //from here, the train should be longer than 1.
+            return true;
         }
 
         if (size <= 10 && this.trainList.tail.data === lokomotiv){
