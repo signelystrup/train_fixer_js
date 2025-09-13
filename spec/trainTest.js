@@ -110,9 +110,38 @@ describe("godsvogne", function(){
 });
 
 describe("sengevogne", function(){
-    xit("skal være direkte forbundet");
+    let train;
 
-    xit("må ikke skulle krydses, for at komme fra en siddevogn til en spisevogn");
+    beforeEach(function(){
+        train = new Train();
+        train.addCar(lokomotiv);
+        train.addCar(spisevogn);
+        train.addCar(spisevogn);
+        train.addCar(spisevogn);
+        train.addCar(spisevogn);
+        train.addCar(sengevogn);
+        train.addCar(sengevogn);
+        train.addCar(sengevogn);
+        train.addCar(sengevogn);
+        train.addCar(sengevogn);
+        train.addCar(lokomotiv);
+
+    });
+
+    it("skal være direkte forbundet", function(){
+        expect(train.isValid()).toBeTrue();
+
+        train.trainList.set(3, sengevogn);
+        expect(train.isValid()).toBeFalse();
+    });
+
+    it("må ikke skulle krydses, for at komme fra en siddevogn til en spisevogn", function(){
+        expect(train.isValid()).toBeTrue();
+
+        train.trainList.set(9, siddevogn);
+        expect(train.isValid()).toBeFalse();
+
+    });
 });
 
 
