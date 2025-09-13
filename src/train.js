@@ -22,6 +22,7 @@ class Train{
 
         //LOKOMOTIV
         if (this.trainList.head.data !== lokomotiv){ //the first car must always be a locomotive.
+            console.log("invalid train: the first car must always be a locomotive.")
             return false;
         }
 
@@ -30,10 +31,10 @@ class Train{
         }
 
         if (size <= 10 && this.trainList.tail.data === lokomotiv){
+            console.log("invalid train: the last car may not be a locomotive, when train is shorter than 11.")
             return false;
-        }
-
-        if (size > 10 && this.trainList.tail.data !== lokomotiv){ //if there are more than 10 cars, the last car must be a locomotive.
+        }else if (size > 10 && this.trainList.tail.data !== lokomotiv){ //if there are more than 10 cars, the last car must be a locomotive.
+            console.log("invalid train: the last car MUST be a locomotive, when train is longer than 10.")
             return false;
         }
 
