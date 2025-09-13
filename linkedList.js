@@ -37,13 +37,10 @@ class LinkedList {
         let current = this.head;
 
         while (current != null){
-            console.log("function");
 
-            callBack();
-
+            callBack(current.data);
             current = current.next; //go to next index
         }
-
     }
 
     isEmpty(){
