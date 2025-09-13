@@ -131,11 +131,7 @@ class LinkedList {
     }
 
     isEmpty(){
-        if (this.head === null){
-            return true;
-        }else{
-            return false;
-        }
+        return this.head === null;
     }
 
 
@@ -150,5 +146,4 @@ class LinkedList {
 
         return array;
     }
-    
 }
