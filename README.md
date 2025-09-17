@@ -10,8 +10,4 @@ Signe Lystrup Nielsen \
 Jeg bruger Jasmine til at teste javascript.
 Test ligger i spec\trainTest.js.
 
-**Køretidskompleksitet**\
-bal bla bla
-
-
 
