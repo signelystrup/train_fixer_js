@@ -7,5 +7,11 @@ Signe Lystrup Nielsen \
 
 
 - **Kør test: åben SpecRunner.html**\
-jeg bruger jasmine til at teste javascript.
+Jeg bruger Jasmine til at teste javascript.
 Test ligger i spec\trainTest.js.
+
+**Køretidskompleksitet**\
+bal bla bla
+
+
+
