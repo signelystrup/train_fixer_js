@@ -3,7 +3,7 @@ Signe Lystrup Nielsen \
 (sini0004@stud.ek.dk)
 
 
-- **Kør programmet: åben index.html**
+- **Kør programmet(visualizer): åben index.html**
 
 
 - **Kør test: åben SpecRunner.html**\
