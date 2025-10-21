@@ -33,45 +33,6 @@ class Train{
             return false;
         }
 
-        /*
-        let firstSengevognSectionEnded = false;
-        let current = this.trainList.head.next;
-
-        
-        while(current !== this.trainList.tail){
-            //sengevogne must be connected:
-            if (current.data === sengevogn &&
-                current.next.data !== sengevogn){
-                if (firstSengevognSectionEnded){ //starting second bloc with sengevogne.
-                    return false;
-                }
-
-                firstSengevognSectionEnded = true;
-            }
-
-            current = current.next;
-        } //end of while lokomotiv-logik.
-
-        //SENGEVOGNE
-        current = this.trainList.head.next;
-        if (current.data !== sengevogn || //if the first passenger car is a sengevogn, skip.
-            !this.trainList.contains(siddevogn)) { //if there are no siddevogne, skip.
-
-            while (current !== null &&
-            current.data.type === "passagervogn") {
-
-                //if there are sidde- or spisevogne after a sengevogn:
-                if (current.data === sengevogn &&
-                    (current.next.data === siddevogn||
-                     current.next.data === spisevogn) ) {
-
-                    return false;
-                }
-
-                current = current.next;
-            }//end of while
-        }//end of if (current !== sengevogn)
-*/
         return true;
     }
 
@@ -125,20 +86,19 @@ class Train{
     }
 
     isSengevogneValid(){
-        //DER ER 5 valide MULIGHEDER:
+        //DER ER 4 valide MULIGHEDER:
         //1. ingen sengevogne
         //2. kun sengevogne
         //3. sengevogne først
         //4. sengevogne sidst.
-        //5. sengevogne først og sidst.
 
         //passagervognene kan være alle kombinationer af:
-        //(sengevogne) + (sidde + spisevogne) + (sengevogne)
-
+        //(sengevogne) + (sidde + spisevogne) || (sidde + spisevogne) + (sengevogne)
 
         let current = this.trainList.head.next; //skip locomotive
-
+        let sengevogneEncountered = false;
         while(current !== null && current.data === sengevogn ){ //skip sengevogne
+            sengevogneEncountered = true;
             current = current.next;
         }
         while(current !== null && current.data !== sengevogn ){ //skip sidde- og spisevogne
@@ -146,6 +106,9 @@ class Train{
         }
         while(current !== null && current.data === sengevogn ){ //skip sengevogne (igen)
             current = current.next;
+            if (sengevogneEncountered){
+                return false;
+            }
         }
 
         //if there are 'spisevogne' or 'siddevogne' after two blocs of 'sengevogne', train is not valid.
