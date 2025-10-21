@@ -25,19 +25,14 @@ class Train{
             return false;
         }
         
-        
-
-        let current = this.trainList.head.next;
+        if (!this.isGodvogneValid()){
+            return false;
+        }
+                
         let firstSengevognSectionEnded = false;
+        let current = this.trainList.head.next;
 
         while(current !== this.trainList.tail){
-
-            //no passenger cars after godsvogne:
-            if (current.data === godsvogn &&
-                current.next.data.type === "passagervogn") {
-                return false;
-            }
-
             //sengevogne must be connected:
             if (current.data === sengevogn &&
                 current.next.data !== sengevogn){
@@ -108,7 +103,20 @@ class Train{
     }
 
     isGodvogneValid(){
-        //TODO.
+        let current = this.trainList.head.next;
+
+        while(current !== this.trainList.tail){
+
+            //no passenger cars after godsvogne:
+            if (current.data === godsvogn &&
+                current.next.data.type === "passagervogn") {
+                return false;
+            }
+            
+            current = current.next;
+        }
+
+        return true;
     }
 
 
