@@ -92,11 +92,12 @@ class Train{
         //3. sengevogne først
         //4. sengevogne sidst.
 
-        //passagervognene kan være alle kombinationer af:
-        //(sengevogne) + (sidde + spisevogne) || (sidde + spisevogne) + (sengevogne)
+        //passagervognene kan være kombinationer af:
+        //(sengevogne) & (sidde + spisevogne) || (sidde + spisevogne) & (sengevogne)
 
         let current = this.trainList.head.next; //skip locomotive
         let sengevogneEncountered = false;
+
         while(current !== null && current.data === sengevogn ){ //skip sengevogne
             sengevogneEncountered = true;
             current = current.next;
@@ -121,33 +122,63 @@ class Train{
 
 
     sortCars(){
+        let sortedList = new LinkedList();
 
-        let current = this.trainList.head.next;
-        let size = 1;
+        let firstLocomotive = lokomotiv;
+        let passengerCars = new LinkedList();
+        let godsvogne = new LinkedList();
 
-        let sengevognFirst = current.next.data === sengevogn; //if second car === sengevogn.
-        let hasSpisevogn = false;
+        let current = this.trainList.head;
 
-        while(current != null){
-
-           if(current.data.type === "passagervogn"){
-               if(current.data === spisevogn){
-                   hasSpisevogn = true;
-               }
-
-               //sort passenger car.
-               
-
-           }else{
-               //sort godsvogn.
-
-           }
-
-           //lokomotiver
+        //adskil gods- og passagervogne. 
+        while (current !== null){
+            if (current.data.type === "passagervogn"){
+                passengerCars.add(current.data);
+            }else if (current.data.type === "godsvogn"){
+                godsvogne.add (current.data);
+            }
 
             current = current.next;
         }
 
+        //sort passengers
+        passengerCars = this.sortPassengers(passengerCars);
+
+        //merge
+        sortedList.add(firstLocomotive);
+        sortedList = LinkedList.concat(sortedList, passengerCars);
+        sortedList = LinkedList.concat(sortedList, godsvogne);
+
+        //add lokomotiv if train is longer than 10.
+        if (this.trainList.size() > 10){
+            sortedList.add(lokomotiv);
+        }
+
+        return sortedList;
+    }
+
+    sortPassengers(list){
+
+        let sengevogne = new LinkedList();
+        let siddeSpisevogne = new LinkedList();
+
+        //adskil
+        let current = list.head;
+        
+        while(current !== null){
+            if (current.data === sengevogn){
+                sengevogne.add(current.data);
+            }else{
+                siddeSpisevogne.add(current.data);
+            }
+            current = current.next;
+        }
+
+        //merge
+        return list.head.data === sengevogn ? //saml passagervogne (i rækkefølge efter første vogn i input-listen)
+            LinkedList.concat(sengevogne, siddeSpisevogne) : 
+            LinkedList.concat(siddeSpisevogne, sengevogne);
+            
     }
 
     printTrain(){
@@ -157,7 +188,7 @@ class Train{
             console.log("Is train valid? " + this.isValid() );
         }
 
-        //this.trainList.forEach(car => console.log("car: " + car.type + ", " + car.subType));
+        this.trainList.forEach(car => console.log("car: " + car.type + ", " + car.subType));
     }
 
 /*

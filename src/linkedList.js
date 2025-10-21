@@ -150,4 +150,24 @@ class LinkedList {
     hasNext(node){
         return node.next !== null;
     }
+
+    static concat(firstList, secondList){
+        let joinedList = firstList;
+
+        let current = secondList.head;
+
+        while (current !== null){
+            joinedList.add(current.data);
+            current = current.next;
+        }
+
+        return joinedList;
+    }
+
+    toString(){
+        
+    }
 }
+
+
+

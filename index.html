@@ -50,16 +50,20 @@
     train3.addCar(lokomotiv);
     train3.addCar(lokomotiv);
     train3.addCar(lokomotiv);
-
+/*
     train1.printTrain();
     train2.printTrain();
-    train3.printTrain();
+    train3.printTrain();*/
     //console.log(train1.trainList.isEmpty());
 
     drawTrain(train1);
     drawTrain(train2);
     drawTrain(train3);
 
+    let sortedTrain = new Train();
+    sortedTrain.trainList = train1.sortCars();
+    drawTrain(sortedTrain);
+    
 </script>
 
 </body>
