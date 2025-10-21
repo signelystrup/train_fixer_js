@@ -188,7 +188,21 @@ class Train{
             console.log("Is train valid? " + this.isValid() );
         }
 
-        this.trainList.forEach(car => console.log("car: " + car.type + ", " + car.subType));
+        console.log(this.toString());
+        //this.trainList.forEach(car => console.log("car: " + car.type + ", " + car.subType));
+    }
+
+    toString(){
+        let current = this.trainList.head;
+        let string = "";
+
+        while (current !== null){
+            string += current.data.type + ", " + current.data.subType + ";    ";
+            current = current.next;
+        }
+
+        return string;
+
     }
 
 /*

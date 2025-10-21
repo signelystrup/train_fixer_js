@@ -164,9 +164,7 @@ class LinkedList {
         return joinedList;
     }
 
-    toString(){
-        
-    }
+
 }
 
 
