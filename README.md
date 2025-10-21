@@ -10,4 +10,5 @@ Signe Lystrup Nielsen \
 Jeg bruger Jasmine til at teste javascript.
 Test ligger i spec\trainTest.js.
 
+- **Jeg har lavet sortering nu**
 
