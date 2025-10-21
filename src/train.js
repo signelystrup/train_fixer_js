@@ -98,6 +98,8 @@ class Train{
             if (current.data === lokomotiv ){
                 return false;
             }
+
+            current = current.next;
         }
 
         return true;
