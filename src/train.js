@@ -11,27 +11,26 @@ class Train{
     }
 
     isValid(){
+        //size === 0
         if (this.trainList.isEmpty()){
             return true; //?? it's not NOT valid.
         }
 
-        if (!this.isLocomotivesValid()){
-            return false;
-        }
-
-        if(this.trainList.size() === 1){ //from here, the train should be longer than 1.
+        //size === 1
+        if(this.trainList.size() === 1 && this.trainList.head.data === lokomotiv){ //must be a locomotive
             return true;
         }
+
+        if (!this.isLocomotivesValid()){ //locomotives.
+            return false;
+        }
+        
+        
 
         let current = this.trainList.head.next;
         let firstSengevognSectionEnded = false;
 
         while(current !== this.trainList.tail){
-
-            //check for locomotives in the middle of the train.
-            if (current.data === lokomotiv ){
-                return false;
-            }
 
             //no passenger cars after godsvogne:
             if (current.data === godsvogn &&
@@ -79,7 +78,10 @@ class Train{
     isLocomotivesValid(){
         const size = this.trainList.size();
 
-        //LOKOMOTIV
+        if (size === 1 && this.trainList.head.data === lokomotiv){
+            return true;
+        }
+
         if (this.trainList.head.data !== lokomotiv){ //the first car must always be a locomotive.
             console.log("invalid train: the first car must always be a locomotive.")
             return false;
@@ -104,6 +106,11 @@ class Train{
 
         return true;
     }
+
+    isGodvogneValid(){
+        //TODO.
+    }
+
 
     sortCars(){
 

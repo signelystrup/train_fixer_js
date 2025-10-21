@@ -62,6 +62,8 @@ describe("togets længde kan være", function(){
     it("1", function(){
         train.addCar(lokomotiv);
 
+        console.log(train);
+        
         expect(train.isValid()).toBeTrue();
     })
 
