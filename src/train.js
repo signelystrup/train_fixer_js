@@ -11,29 +11,16 @@ class Train{
     }
 
     isValid(){
-
         if (this.trainList.isEmpty()){
             return true; //?? it's not NOT valid.
         }
 
-        const size = this.trainList.size();
-
-
-
-        //LOKOMOTIV
-        if (this.trainList.head.data !== lokomotiv){ //the first car must always be a locomotive.
-            console.log("invalid train: the first car must always be a locomotive.")
+        if (!this.isLocomotivesValid()){
             return false;
         }
 
-        if(size === 1){ //from here, the train should be longer than 1.
+        if(this.trainList.size() === 1){ //from here, the train should be longer than 1.
             return true;
-        }
-
-        if (size <= 10 && this.trainList.tail.data === lokomotiv){
-            return false;
-        }else if (size > 10 && this.trainList.tail.data !== lokomotiv){ //if there are more than 10 cars, the last car must be a locomotive.
-            return false;
         }
 
         let current = this.trainList.head.next;
@@ -89,10 +76,60 @@ class Train{
         return true;
     }
 
+    isLocomotivesValid(){
+        const size = this.trainList.size();
 
+        //LOKOMOTIV
+        if (this.trainList.head.data !== lokomotiv){ //the first car must always be a locomotive.
+            console.log("invalid train: the first car must always be a locomotive.")
+            return false;
+        }
 
+        //if there are more than 10 cars, the last car must be a locomotive.
+        if (size <= 10 && this.trainList.tail.data === lokomotiv){
+            return false;
+        }else if (size > 10 && this.trainList.tail.data !== lokomotiv){
+            return false;
+        }
+
+        //check for locomotives in the middle of the train.
+        let current = this.trainList.head.next;
+        while(current !== this.trainList.tail){
+            if (current.data === lokomotiv ){
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     sortCars(){
+
+        let current = this.trainList.head.next;
+        let size = 1;
+
+        let sengevognFirst = current.next.data === sengevogn; //if second car === sengevogn.
+        let hasSpisevogn = false;
+
+        while(current != null){
+
+           if(current.data.type === "passagervogn"){
+               if(current.data === spisevogn){
+                   hasSpisevogn = true;
+               }
+
+               //sort passenger car.
+               
+
+           }else{
+               //sort godsvogn.
+
+           }
+
+           //lokomotiver
+
+            current = current.next;
+        }
 
     }
 
@@ -105,6 +142,22 @@ class Train{
 
         //this.trainList.forEach(car => console.log("car: " + car.type + ", " + car.subType));
     }
+
+/*
+    insertionSortRange(arr, low, high) {
+        for (let i = low + 1; i <= high; i++) { //range = low+1 to high
+
+            let key = arr[i]; //number. starting at second lowest index, increase by one.
+
+            let j = i - 1;
+            while (j >= low && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+
+            arr[j + 1] = key;
+        }//end of for i loop.
+    }*/
 
 }
 
