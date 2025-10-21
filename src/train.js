@@ -28,10 +28,16 @@ class Train{
         if (!this.isGodvogneValid()){
             return false;
         }
-                
+
+        if (!this.isSengevogneValid()){
+            return false;
+        }
+
+        /*
         let firstSengevognSectionEnded = false;
         let current = this.trainList.head.next;
 
+        
         while(current !== this.trainList.tail){
             //sengevogne must be connected:
             if (current.data === sengevogn &&
@@ -64,9 +70,8 @@ class Train{
 
                 current = current.next;
             }//end of while
-
         }//end of if (current !== sengevogn)
-
+*/
         return true;
     }
 
@@ -114,6 +119,38 @@ class Train{
             }
             
             current = current.next;
+        }
+
+        return true;
+    }
+
+    isSengevogneValid(){
+        //DER ER 5 valide MULIGHEDER:
+        //1. ingen sengevogne
+        //2. kun sengevogne
+        //3. sengevogne først
+        //4. sengevogne sidst.
+        //5. sengevogne først og sidst.
+
+        //passagervognene kan være alle kombinationer af:
+        //(sengevogne) + (sidde + spisevogne) + (sengevogne)
+
+
+        let current = this.trainList.head.next; //skip locomotive
+
+        while(current.data === sengevogn ){ //first possible 'sengevogne'-section.
+            current = current.next;
+        }
+        while(current.data !== sengevogn && current !== null){ //'siddevogne' and 'spisevogne' must be grouped.
+            current = current.next;
+        }
+        while(current.data === sengevogn ){ //last possible 'sengevogne'-section
+            current = current.next;
+        }
+
+        //if there are 'spisevogne' or 'siddevogne' after two blocs of 'sengevogne', train is not valid.
+        if (current.data === spisevogn || current.data === siddevogn){
+            return false;
         }
 
         return true;
