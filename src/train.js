@@ -138,18 +138,18 @@ class Train{
 
         let current = this.trainList.head.next; //skip locomotive
 
-        while(current.data === sengevogn ){ //first possible 'sengevogne'-section.
+        while(current !== null && current.data === sengevogn ){ //skip sengevogne
             current = current.next;
         }
-        while(current.data !== sengevogn && current !== null){ //'siddevogne' and 'spisevogne' must be grouped.
+        while(current !== null && current.data !== sengevogn ){ //skip sidde- og spisevogne
             current = current.next;
         }
-        while(current.data === sengevogn ){ //last possible 'sengevogne'-section
+        while(current !== null && current.data === sengevogn ){ //skip sengevogne (igen)
             current = current.next;
         }
 
         //if there are 'spisevogne' or 'siddevogne' after two blocs of 'sengevogne', train is not valid.
-        if (current.data === spisevogn || current.data === siddevogn){
+        if (current !== null && (current.data === spisevogn || current.data === siddevogn) ){
             return false;
         }
 
